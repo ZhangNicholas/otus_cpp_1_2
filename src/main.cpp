@@ -65,11 +65,11 @@ int main(int argc, char const* argv[])
         // TODO reverse lexicographically sort
 
         // required sort
-        for (auto i = (size(ip_pool[0]) - 1); i > 0; i--)
+        for (int i = (size(ip_pool[0]) - 1); i > 0; i--)
         {
             std::stable_sort(ip_pool.begin(), ip_pool.end(), [i](const ip& d1,
                 const ip& d2)
-                {return stoi(d1[i-1]) > stoi(d2[i-1]);} // that works
+                {return stoi(d1[i]) > stoi(d2[i]);} // that works
             );
         }
 
