@@ -20,7 +20,7 @@ before_script:
 - sudo apt-get update -qq
 script:
 - pwd
-- cd TRAVIS_BUILD_DIR
+- cd $TRAVIS_BUILD_DIR
 - pwd
 - cmake .
 - cmake --build .
