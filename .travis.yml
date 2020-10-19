@@ -3,10 +3,10 @@ before_install:
 #- sudo apt-get update
 - sudo apt-get install libgtest-dev
 - cd /usr/src/gtest/
-- sudo cmake CMakeLists.txt
-- sudo cmake -DBUILD_SHARED_LIBS=ON
-- sudo make
-- sudo cp *.so /usr/lib
+- cmake CMakeLists.txt
+- cmake -DBUILD_SHARED_LIBS=ON
+- make
+- cp *.so /usr/lib
 before_script:
 - echo "deb http://archive.ubuntu.com/ubuntu xenial main universe" | sudo tee -a /etc/apt/sources.list
 - sudo apt-get update -qq
