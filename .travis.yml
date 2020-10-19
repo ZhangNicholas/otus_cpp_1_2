@@ -32,4 +32,4 @@ deploy:
  script:
   - curl -T ipfilter-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -uzhangnicholas:$BINTRAY_API_KEY "https://api.bintray.com/content/cnickol/Otus_cpp/hw_1_2/$TRAVIS_BUILD_NUMBER/ipfilter-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
  on:
-  branch: master
+  branch: main
