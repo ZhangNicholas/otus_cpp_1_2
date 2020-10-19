@@ -1,18 +1,18 @@
 language: cpp
 before_install:
 #- sudo apt-get update
-sudo apt-get install libgtest-dev
-cd /usr/src/googletest/googletest
-sudo mkdir build
-cd build
-sudo cmake ..
-sudo make
-sudo cp libgtest* /usr/lib/
-cd ..
-sudo rm -rf build
-sudo mkdir /usr/local/lib/googletest
-sudo ln -s /usr/lib/libgtest.a /usr/local/lib/googletest/libgtest.a
-sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/googletest/libgtest_main.a
+- sudo apt-get install libgtest-dev
+- cd /usr/src/googletest/googletest
+- sudo mkdir build
+- cd build
+- sudo cmake ..
+- sudo make
+- sudo cp libgtest* /usr/lib/
+- cd ..
+- sudo rm -rf build
+- sudo mkdir /usr/local/lib/googletest
+- sudo ln -s /usr/lib/libgtest.a /usr/local/lib/googletest/libgtest.a
+- sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/googletest/libgtest_main.a
 #- cp *.so /usr/lib
 before_script:
 - echo "deb http://archive.ubuntu.com/ubuntu xenial main universe" | sudo tee -a /etc/apt/sources.list
@@ -29,4 +29,4 @@ deploy:
   - curl -T ipfilter-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -uzhangnicholas:$BINTRAY_API_KEY "https://api.bintray.com/content/cnickol/Otus_cpp/hw_1_2/$TRAVIS_BUILD_NUMBER/ipfilter-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
 
  on:
-  branch: main
+  branch: master
