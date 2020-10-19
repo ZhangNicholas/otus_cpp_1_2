@@ -2,7 +2,8 @@ language: cpp
 before_install:
 #- sudo apt-get update
 - sudo apt-get install libgtest-dev
-- sudo cd /usr/src/googletest/googletest
+#- cd /usr/src/googletest/googletest
+- cd /usr/src/gtest
 - sudo mkdir build
 - cd build
 - sudo cmake ..
