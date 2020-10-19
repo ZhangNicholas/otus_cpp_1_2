@@ -19,6 +19,9 @@ before_script:
 - echo "deb http://archive.ubuntu.com/ubuntu xenial main universe" | sudo tee -a /etc/apt/sources.list
 - sudo apt-get update -qq
 script:
+- pwd
+- cd ZhangNicholas/otus_cpp_1_2
+- pwd
 - cmake .
 - cmake --build .
 #- cmake --build . --target test
