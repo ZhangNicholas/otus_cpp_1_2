@@ -20,8 +20,9 @@ before_script:
 - sudo apt-get update -qq
 script:
 - pwd
-- cd ZhangNicholas/otus_cpp_1_2
-- pwd
+- cd ..
+- ls
+- cd /ZhangNicholas/otus_cpp_1_2
 - cmake .
 - cmake --build .
 #- cmake --build . --target test
