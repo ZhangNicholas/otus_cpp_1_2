@@ -65,7 +65,7 @@ int main(int argc, char const* argv[])
         // TODO reverse lexicographically sort
 
         // required sort
-        for (int i = size(ip_pool[0]) - 1; i >= 0; i--)
+        for (size_t i = (size(ip_pool[0]) - 1); i >= 0; i--)
         {
             std::stable_sort(ip_pool.begin(), ip_pool.end(), [i](const ip& d1,
                 const ip& d2)
