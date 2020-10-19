@@ -1,12 +1,19 @@
 language: cpp
 before_install:
 #- sudo apt-get update
-- sudo apt-get install libgtest-dev
-- cd /usr/src/gtest/
-- cmake CMakeLists.txt
-- cmake -DBUILD_SHARED_LIBS=ON
-- make
-- cp *.so /usr/lib
+sudo apt-get install libgtest-dev
+cd /usr/src/googletest/googletest
+sudo mkdir build
+cd build
+sudo cmake ..
+sudo make
+sudo cp libgtest* /usr/lib/
+cd ..
+sudo rm -rf build
+sudo mkdir /usr/local/lib/googletest
+sudo ln -s /usr/lib/libgtest.a /usr/local/lib/googletest/libgtest.a
+sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/googletest/libgtest_main.a
+#- cp *.so /usr/lib
 before_script:
 - echo "deb http://archive.ubuntu.com/ubuntu xenial main universe" | sudo tee -a /etc/apt/sources.list
 - sudo apt-get update -qq
