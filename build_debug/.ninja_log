@@ -1,6 +1,0 @@
-# ninja log v5
-0	8	0	clean	9992afb1f91dc381
-1	450	624787734	CMakeFiles/ipfilter.dir/src/main.cpp.obj	d96141564e6f2325
-4	636	624787734	CMakeFiles/test_ipfilter.dir/test/test_ipfilter.cpp.obj	3dfb58851e42c3fa
-450	734	624787734	ipfilter.exe	830026682cf7e1bd
-637	1628	624787735	test_ipfilter.exe	b7892cec3a9ab03f
