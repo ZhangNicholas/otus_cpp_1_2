@@ -4,7 +4,7 @@ before_install:
 - sudo apt-get install -y libgtest-dev cmake
 #- cd /usr/src/googletest/googletest
 - cd /usr/src/gtest
-- mkdir build
+- sudo mkdir build
 - cd build
 - sudo cmake ..
 - sudo make
