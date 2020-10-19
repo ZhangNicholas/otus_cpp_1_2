@@ -9,7 +9,7 @@ else()
    project(otus_hw_1_2 VERSION 0.0.1)
 endif()
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 
 # Lookup for pre-built gtest
 find_package(GTest REQUIRED)
@@ -28,7 +28,7 @@ add_executable(
  )
 
 set_target_properties(ipfilter test_ipfilter PROPERTIES
-    CXX_STANDARD 11
+    CXX_STANDARD 14
     CXX_STANDARD_REQUIRED ON
 )
 
