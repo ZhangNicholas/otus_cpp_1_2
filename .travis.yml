@@ -6,7 +6,7 @@ before_install:
 - cd /usr/src/gtest
 - sudo mkdir build
 - cd build
-- sudo cmake ..
+- sudo cmake -DBUILD_SHARED_LIBS=ON ..
 - sudo make
 - sudo cp libgtest* /usr/lib/
 - cd ..
