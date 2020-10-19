@@ -20,9 +20,8 @@ before_script:
 - sudo apt-get update -qq
 script:
 - pwd
-- cd ..
-- ls
-- cd /ZhangNicholas/otus_cpp_1_2
+- cd TRAVIS_BUILD_DIR
+- pwd
 - cmake .
 - cmake --build .
 #- cmake --build . --target test
