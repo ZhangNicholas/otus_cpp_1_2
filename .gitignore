@@ -42,3 +42,4 @@
 # local settings
 */CMakeSettings.json
 CMakeSettings.json
+/build_debug
