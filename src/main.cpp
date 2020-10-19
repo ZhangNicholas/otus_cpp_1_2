@@ -70,7 +70,6 @@ int main(int argc, char const* argv[])
             std::stable_sort(ip_pool.begin(), ip_pool.end(), [i](const ip& d1,
                 const ip& d2)
                 {return stoi(d1[i-1]) > stoi(d2[i-1]);} // that works
-                //{return (d1[i].compare(d2[i]) > 0); } 
             );
         }
 
