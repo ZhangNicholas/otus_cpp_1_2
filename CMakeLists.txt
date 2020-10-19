@@ -1,7 +1,12 @@
 cmake_minimum_required(VERSION 3.2)
 
 # enable MSVC_RUNTIME_LIBRARY property
-cmake_policy(SET CMP0091 NEW)
+#cmake_policy(SET CMP0091 NEW)
+
+if(MSVC)
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT")
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
+endif()
 
 if($ENV{TRAVIS_BUILD_NUMBER})
     project(otus_hw_1_2 VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
@@ -32,12 +37,13 @@ add_executable(
     CXX_STANDARD_REQUIRED ON
 )
 
-if (MSVC)
-    set_property(TARGET test_ipfilter PROPERTY
-        MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
-endif()
+#if (MSVC)
+#   set_property(TARGET test_ipfilter PROPERTY
+#        MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+#endif()
 
 # Add googletest, src to the include directories for the test target
+
 target_include_directories(
     test_ipfilter
     PRIVATE ${GTEST_INCLUDE_DIRS}
