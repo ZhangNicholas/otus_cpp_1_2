@@ -15,7 +15,7 @@ else()
 endif()
 
 set(CMAKE_CXX_STANDARD 14)
-SET(CMAKE_CXX_FLAGS "-Wno-error")
+SET(CMAKE_CXX_FLAGS "--disable-werror")
 
 # Lookup for pre-built gtest
 find_package(GTest REQUIRED)
