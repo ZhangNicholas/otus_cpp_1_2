@@ -83,6 +83,6 @@ set(CPACK_PACKAGE_CONTACT cnickol@gmail.com)
 
 include(CPack)
 
-#enable_testing()
+enable_testing()
 
-#add_test(test_ipfilter test_ipfilter) 
+add_test(test_ipfilter test_ipfilter) 
