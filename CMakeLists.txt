@@ -4,9 +4,9 @@ cmake_minimum_required(VERSION 3.2)
 #cmake_policy(SET CMP0091 NEW)
 
 if($ENV{TRAVIS_BUILD_NUMBER})
-    project(otus_hw_1_2 VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
+    project(ipfilter VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 else()
-   project(otus_hw_1_2 VERSION 0.0.1)
+   project(ipfilter VERSION 0.0.1)
 endif()
 
 set(CMAKE_CXX_STANDARD 14)
