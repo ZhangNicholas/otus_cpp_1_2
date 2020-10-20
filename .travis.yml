@@ -1,5 +1,4 @@
-﻿#test
-language: cpp
+﻿language: cpp
 before_install:
  - sudo apt-get install -y libgtest-dev cmake
  - cd /usr/src/gtest
