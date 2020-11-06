@@ -1,4 +1,3 @@
-// one more test travis deploy settings
 #include <cassert>
 #include <cstdlib>
 #include <iostream>
