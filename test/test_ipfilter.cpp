@@ -6,36 +6,58 @@
 #include <algorithm>
 #include <gtest/gtest.h>
 
-#include "ipfilter.hpp"
+#include "validation.hpp"
 
-TEST(Iplist, Empty) {
-    // Arrange
-    iplist ip_pool;
-
-    // Act (empty for this test)
-
-    // Assert
-    ASSERT_EQ(ip_pool.size(), 0);
-    ASSERT_TRUE(ip_pool.empty());
+bool checkIp(const std::vector<uint8_t>& ip, const std::vector<uint8_t>& expectedIp) {
+	if (expectedIp.size() != ip.size()) return false;
+	for (int i = 0; i < expectedIp.size(); ++i) {
+		if (ip.at(i) != expectedIp.at(i)) return false;
+	}
+	return true;
 }
 
-TEST(Ipist, Size) {
-    // Arrange
-    int count = 10;
-    std::vector<std::string> placeholder{""};
-    iplist ip_pool;
+TEST(getValidValue, validValue) {
+	std::string str{ "1" };
+	ASSERT_EQ(getValidValue(str), 1);
+}
+TEST(getValidValue, LeadingZero) {
+	std::string str{ "00" };
+	ASSERT_EQ(getValidValue(str), -1);
+}
 
-    // Act
-    for (size_t i = 0; i < count; ++i) {
-        ip_pool.push_back(placeholder);
-    }
+TEST(getValidValue, NegativeValue) {
+	std::string str{ "-1" };
+	ASSERT_EQ(getValidValue(str), -1);
+}
 
-    // Assert
-    ASSERT_EQ(ip_pool.size(), count);
-    ASSERT_FALSE(ip_pool.empty());
+TEST(getValidValue, ByteOverflowValue) {
+	std::string str{ "256" };
+	ASSERT_EQ(getValidValue(str), -1);
+}
+
+TEST(getValidValue, nonDigitCharacters) {
+	std::string str{ "trololo" };
+	ASSERT_EQ(getValidValue(str), -1);
+}
+TEST(extractValidIpV4, validIP) {
+	std::vector<std::string> testStr{ "192", "168", "0", "1" };
+	std::vector<uint8_t> expectedIp{ 192, 168, 0, 1 };
+	ASSERT_EQ(checkIp(extractValidIpV4(testStr), expectedIp), true);
+}
+
+TEST(extractValidIpV4, longIP) {
+	std::vector<std::string> testStr{ "192", "168", "0", "1", "0" };
+	std::vector<uint8_t> expectedIp{};
+	ASSERT_EQ(checkIp(extractValidIpV4(testStr), expectedIp), true);
+}
+
+TEST(extractValidIpV4, shortIP) {
+	std::vector<std::string> testStr{ "192", "168", "0"};
+	std::vector<uint8_t> expectedIp{};
+	ASSERT_EQ(checkIp(extractValidIpV4(testStr), expectedIp), true);
 }
 
 int main(int argc, char** argv) {
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+	testing::InitGoogleTest(&argc, argv);
+	return RUN_ALL_TESTS();
 }
