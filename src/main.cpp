@@ -40,15 +40,16 @@ int main()
 	try
 	{
 		std::vector < std::vector<uint8_t> > ipPool;
-		int *pLineNumber = new int(0);
-
-		for (std::string line; std::getline(std::cin, line);) {
-			std::vector<uint8_t> tempIp{ extractValidIpV4(split(split(line, '\t').at(0), '.')) };
-			if (!tempIp.empty()) ipPool.push_back(tempIp);
-			else std::cout << "Invalid value '" << line <<"' in line " << *pLineNumber << ". The value was ommitted." << std::endl;
-			++*pLineNumber;
+		
+		{ // scope out LineNumber
+			int LineNumber{ 0 };
+			for (std::string line; std::getline(std::cin, line);) {
+				std::vector<uint8_t> tempIp{ extractValidIpV4(split(split(line, '\t').at(0), '.')) };
+				if (!tempIp.empty()) ipPool.push_back(tempIp);
+				else std::cout << "Invalid value '" << line << "' in line " << LineNumber++
+					<< ". The value was ommitted." << std::endl;
+			}
 		}
-		delete pLineNumber;
 
 		std::sort(ipPool.begin(), ipPool.end(), [](const std::vector<uint8_t>& d1,
 			const std::vector<uint8_t>& d2) {
