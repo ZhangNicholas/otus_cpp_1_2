@@ -40,7 +40,6 @@ int main()
 	try
 	{
 		std::vector < std::vector<uint8_t> > ipPool;
-		
 		{ // scope out LineNumber
 			int LineNumber{ 0 };
 			for (std::string line; std::getline(std::cin, line);) {
