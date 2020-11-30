@@ -24,7 +24,7 @@ std::vector<std::string> split(const std::string& str, char d)
 	return r;
 }
 
-std::ostream& operator<< (std::ostream& out, const std::vector<uint8_t>& vector)
+std::ostream& operator<< (std::ostream& out, const auto& vector)
 {
 	for (auto ip_part = vector.cbegin(); ip_part != vector.cend(); ++ip_part) {
 		if (ip_part != vector.cbegin()) {
@@ -50,23 +50,24 @@ int main()
 			}
 		}
 
-		std::sort(ipPool.begin(), ipPool.end(), [](const std::vector<uint8_t>& d1,
-			const std::vector<uint8_t>& d2) {
-				for (int i = 0; i < d1.size(); ++i) {
-					if (d1[i] != d2[i]) return d1[i] > d2[i];
-				}
+		std::sort(ipPool.begin(), ipPool.end(), [](const auto& d1,
+			const auto& d2) {
+				//for (int i = 0; i < d1.size(); ++i) {
+				//	if (d1[i] != d2[i]) return d1[i] > d2[i];
+				//}
+				if (d1 != d2) return d1 > d2;
 				return false;
 			}
 		); 
 	
-		for (auto ip : ipPool) {
+		for (const auto& ip : ipPool) {
 			std::cout << ip << std::endl;
 		}
 
 		std::for_each(
 			ipPool.begin(),
 			ipPool.end(),
-			[](const std::vector<uint8_t> ip) {
+			[](const auto& ip) {
 				if (ip[0] == 1) {
 					std::cout << ip << std::endl;
 				}
@@ -76,7 +77,7 @@ int main()
 		std::for_each(
 			ipPool.begin(),
 			ipPool.end(),
-			[](const std::vector<std::uint8_t> ip) {
+			[](const auto& ip) {
 				if (ip[0] == 46 && ip[1] == 70) {
 					std::cout << ip << std::endl;
 				}
@@ -86,7 +87,7 @@ int main()
 		std::for_each(
 			ipPool.begin(),
 			ipPool.end(),
-			[](const std::vector<uint8_t> ip) {
+			[](const auto& ip) {
 				for (auto ip_part = ip.cbegin(); ip_part != ip.cend(); ++ip_part) {
 					if (*ip_part == 46) {
 						std::cout << ip << std::endl;
